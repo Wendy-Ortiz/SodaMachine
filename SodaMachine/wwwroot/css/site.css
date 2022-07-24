@@ -16,3 +16,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.parent {
+    margin: 0rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+.child {
+    display: inline-block;
+    padding: 0rem 2rem;
+    vertical-align: middle;
+}
+div img {
+  height: 230px;
+  width: 150px;
+}
