@@ -40,7 +40,7 @@ div img {
     top: 75%;
     overflow: hidden;
     position: fixed;
-    background-color: #D9D9D9
+    background-color: #D9D9D9;
 }
 
 .button {
@@ -68,8 +68,8 @@ div img {
 
 .SubmitButton {
     position: absolute;
-    right: 30%;
-    bottom: 85%;
+    right: 32%;
+    bottom: 80%;
     background-color: #4CAF50;
     border: none;
     font-size: 16px;
@@ -104,8 +104,8 @@ div img {
 
 .CancelButton {
     position: absolute;
-    right: 30%;
-    bottom: 85%;
+    right: 18%;
+    bottom: 80%;
     background-color: #E25656;
     border: none;
     font-size: 16px;
@@ -135,5 +135,15 @@ div img {
     padding: 0;
     margin: 0;
     opacity: 1;
-    transition: 0s
+    transition: 0s;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    height: 0%;
+    width: 100%;
+    color: black;
+    text-align: left;
+    font-size: 10px;
 }
