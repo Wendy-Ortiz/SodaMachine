@@ -56,11 +56,84 @@ div img {
     font-size: 20px;
     font-weight: bold;
 }
-button:hover {
+
+.button:hover {
     background-color: #f8f8f8
 }
 
-button:active {
+.button:active {
     background-color: #FFFFFF;
     transform: translateY(4px);
+}
+
+.SubmitButton {
+    position: absolute;
+    right: 30%;
+    bottom: 85%;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 5px;
+    width: 160px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+.SubmitButton:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.SubmitButton:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+.CancelButton {
+    position: absolute;
+    right: 30%;
+    bottom: 85%;
+    background-color: #E25656;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 5px;
+    width: 160px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+.CancelButton:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.CancelButton:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
 }
