@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SodaMachine.Models;
+using SodaMachine.Handlers;
 using System.Diagnostics;
 
 namespace SodaMachine.Controllers
@@ -15,7 +16,8 @@ namespace SodaMachine.Controllers
 
         public IActionResult Index()
         {
-            var products = GetListOfProducts();
+            ProductsHandler productsHandler = new ProductsHandler();
+            var products = productsHandler.GetListOfProducts();
             ViewBag.MainTitle = "MÁQUINA EXPENDEDORA DE REFRESCOS";
             return View(products);
         }
@@ -30,15 +32,77 @@ namespace SodaMachine.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        public List<ProductModel> GetListOfProducts()
+        
+        public IActionResult DeleteProduct(string name)
         {
-            List<ProductModel> products = new List<ProductModel>();
-            products.Add(new ProductModel { ProductId = 1, ProductName = "Coca Cola", Price = 500, Quantity = 10, ProductImage = "images/coca.jpg" });
-            products.Add(new ProductModel { ProductId = 2, ProductName = "Pepsi", Price = 600, Quantity = 8, ProductImage = "images/pepsi.jpg" });
-            products.Add(new ProductModel { ProductId = 3, ProductName = "Fanta", Price = 550, Quantity = 10, ProductImage = "images/fanta.jpg" });
-            products.Add(new ProductModel { ProductId = 1, ProductName = "Sprite", Price = 725, Quantity = 15, ProductImage = "images/sprite.jpg" });
-            return products;
+            ActionResult view;
+            try
+            {
+                var productHandler = new ProductsHandler();
+                var actualProducts = productHandler.GetActualListOfProducts();
+                var product = actualProducts.Find(model => model.ProductName == name);
+                if (product == null)
+                {
+                    //TODO: error view
+                    view = RedirectToAction("Index");
+                }
+                else
+                {
+                    actualProducts = productHandler.DeleteProduct(name);
+                    view = View(actualProducts);
+                }
+            }
+            catch
+            {
+                //TODO: error view
+                view = RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public IActionResult GetQuantityAvailable(string name)
+        {
+            ActionResult view;
+            try
+            {
+                var productHandler = new ProductsHandler();
+                var actualProducts = productHandler.GetActualListOfProducts();
+                var product = actualProducts.Find(model => model.ProductName == name);
+                if (product == null)
+                {
+                    //TODO: error view
+                    view = RedirectToAction("Index");
+                }
+                else
+                {
+                    int quantity = productHandler.GetQuantityAvailable(name);
+                    view = View(quantity);
+                }
+            }
+            catch
+            {
+                //TODO: error view
+                view = RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public IActionResult SelectProduct(string name)
+        {
+
+            var productHandler = new ProductsHandler();
+            var selectedProducts = productHandler.SelectProduct(name);
+            var product = productHandler.GetQuantityAvailable(name);
+            if (product < selectedProducts.Count())
+            {
+                ViewBag.ErroMessage = "Cantidad inválida";
+            }
+            else
+            {
+                ViewBag.Quantity += 1;
+            }
+           
+            return View();
         }
     }
 }
