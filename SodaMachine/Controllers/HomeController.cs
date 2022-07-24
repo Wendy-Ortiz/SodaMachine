@@ -19,6 +19,7 @@ namespace SodaMachine.Controllers
             ProductsHandler productsHandler = new ProductsHandler();
             var products = productsHandler.GetListOfProducts();
             ViewBag.MainTitle = "MÁQUINA EXPENDEDORA DE REFRESCOS";
+            ViewBag.Quantity = 0;
             return View(products);
         }
 
@@ -32,7 +33,7 @@ namespace SodaMachine.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+
         public IActionResult DeleteProduct(string name)
         {
             ActionResult view;
@@ -84,12 +85,12 @@ namespace SodaMachine.Controllers
                 //TODO: error view
                 view = RedirectToAction("Index");
             }
-            return View();
+            return View("Index");
         }
 
-        public IActionResult SelectProduct(string name)
+        [HttpPost]
+        public ActionResult SelectProduct(string name, string button)
         {
-
             var productHandler = new ProductsHandler();
             var selectedProducts = productHandler.SelectProduct(name);
             var product = productHandler.GetQuantityAvailable(name);
@@ -99,10 +100,12 @@ namespace SodaMachine.Controllers
             }
             else
             {
-                ViewBag.Quantity += 1;
+                if (button == "plus")
+                    ViewBag.Quantity += 1;
+                else
+                    ViewBag.Quantity -= 1;
             }
-           
-            return View();
+            return View("Index");
         }
     }
 }
