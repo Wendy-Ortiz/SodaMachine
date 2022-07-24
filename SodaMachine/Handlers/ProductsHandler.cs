@@ -5,13 +5,14 @@ namespace SodaMachine.Handlers
 {
     public class ProductsHandler
     {
-        
+        List<ProductModel> products = new List<ProductModel>();
+        List<string> temporalProducts = new List<string>();
+        int counterProducts = 0;
+
         public ProductsHandler()
         {
             var builder = WebApplication.CreateBuilder();
         }
-
-        List<ProductModel> products = new List<ProductModel>();
 
         public List<ProductModel> GetListOfProducts()
         {
@@ -47,7 +48,7 @@ namespace SodaMachine.Handlers
             }
             return products;
         }
-        List<string> temporalProducts = new List<string>();
+
         public List<string> SelectProduct(string productSelect)
         {
             temporalProducts.Add(productSelect);
@@ -68,6 +69,7 @@ namespace SodaMachine.Handlers
             }
             return result;
         }
+
         public List<ProductModel> GetActualListOfProducts()
         {
             return products;
@@ -77,5 +79,6 @@ namespace SodaMachine.Handlers
         {
             return temporalProducts;
         }
+
     }
 }
