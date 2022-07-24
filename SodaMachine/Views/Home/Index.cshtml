@@ -4,6 +4,10 @@
     ViewData["Title"] = "Soda Machine";
 }
 
+<head>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
 <div class="text-center">
     <h3>@ViewBag.MainTitle</h3>
 </div>
@@ -13,17 +17,22 @@
          <div class='child'>
             <img src=@item.ProductImage alt=@item.ProductName />
             <div>
-                <h6 class="text-center"><strong>Disponible:</strong> @item.Quantity</h6>
-                <h6 class="text-center"><strong>Precio:</strong> ₡@item.Price c/u</h6>
+                <h6 class="text-center" style="margin-bottom: 2px"><strong>Disponible:</strong> @item.Quantity</h6>
+                <h6 class="text-center" style="margin-bottom: 8px"><strong>Precio:</strong> ₡@item.Price c/u</h6>
                 <div class='parents'>
+                    <h6 class="text-center" style="margin: 0px"><strong>Cantidad:</strong></h6>
                     <div class='child'>
-                        <button>+</button>
-                        <div class='child' border="5px solid gray">1</div>
-                        <button>-</button>
+                        <button class='button'>-</button>
+                        <div class='child' style="border-style: ridge">1</div>
+                        <button class='button'>+</button>
                     </div>
                 </div>
             </div>
          </div>
     }
+</div>
+<br />
+<div class='div'>
+     <button>Comprar</button>
 </div>
 
