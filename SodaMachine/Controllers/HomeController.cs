@@ -20,6 +20,7 @@ namespace SodaMachine.Controllers
             var products = productsHandler.GetListOfProducts();
             ViewBag.MainTitle = "MÁQUINA EXPENDEDORA DE REFRESCOS";
             ViewBag.Quantity = 0;
+            ViewBag.Cost = 0;
             return View(products);
         }
 
