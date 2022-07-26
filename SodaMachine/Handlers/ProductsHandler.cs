@@ -7,7 +7,6 @@ namespace SodaMachine.Handlers
     {
         List<ProductModel> products = new List<ProductModel>();
         List<string> temporalProducts = new List<string>();
-        int counterProducts = 0;
 
         public ProductsHandler()
         {
