@@ -1,5 +1,3 @@
-using System;
-
 namespace SodaMachine.Models
 {
     public class ProductModel
