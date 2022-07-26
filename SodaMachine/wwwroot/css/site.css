@@ -148,12 +148,22 @@ div img {
     font-size: 10px;
 }
 
-.text {
+.textRight {
     position: absolute;
     right: 18%;
-    bottom: 90%;
-    font-size: 22px;
+    bottom: 92%;
+    font-size: 18px;
     padding: 5px;
     width: 160px;
     text-align: right;
+}
+
+.textLeft {
+    position: absolute;
+    right: 68%;
+    bottom: 92%;
+    font-size: 15px;
+    padding: px;
+    width: 200px;
+    text-align: left;
 }
