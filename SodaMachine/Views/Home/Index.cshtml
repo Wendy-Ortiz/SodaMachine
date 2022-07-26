@@ -35,7 +35,28 @@
 <div class='div'>
     <h6 class='textRight' style="margin-bottom: 2px"><strong>Costo total:</strong> ₡@ViewBag.Cost</h6>
     <h6 class='textLeft' style="margin-bottom: 2px"><strong>Resumen de la compra:</strong></h6>
-    <button class='SubmitButton'>COMPRAR</button>
+    <button onclick="showThisDialog()" class='SubmitButton'>COMPRAR</button>
     <button class='CancelButton'>CANCELAR</button>
 </div>
 
+
+<dialog id="this-dialog">
+  <p>Ingrese la cantidad de dinero con la que concretará la compra.</p>
+  <form>
+    <input type="number" id="quantity" name="quantity" min="25">
+  </form>
+  <button onclick="hideThisDialog()" class='DialogButton'>FINALIZAR COMPRA </button>
+</dialog>  
+
+<script>
+    var dialog = document.querySelector('dialog');
+    dialogPolyfill.registerDialog(dialog);
+
+    function showThisDialog() {
+      document.getElementById('this-dialog').showModal();
+    }
+
+    function hideThisDialog() {
+      document.getElementById('this-dialog').close();
+    }
+</script>
